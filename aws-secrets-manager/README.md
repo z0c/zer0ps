@@ -11,7 +11,7 @@ AWS Secrets Manager is a managed service to store and transport sensitive data l
 
 ### Secret storage
 
-Secrets are encrypted at rest using KMS keys and tansmited over the wire with TLS.
+Secrets are encrypted at rest using KMS keys and tansmited over the wire with TLS. Secrets Manager creates a default key call `DefaultEncryptionKey` in KMS but a custom can also used.
 
 ### Secret rotation
 
@@ -38,7 +38,33 @@ Secretes can be retrieved via:
 ## Limitations
 
 * No cross account access
+* Secrets are stored per region
 * Secret retrieval is done by name and not by ARN
+
+## CLI usage
+
+Creating a secret
+
+```bash
+aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "23sf23c#et"
+{
+    "ARN": "arn:aws:secretsmanager:REGION:ACCOUNTNUMBER:secret:testSecret-ID",
+    "Name": "testSecret",
+    "VersionId": "VERSIONGUID-ab12-1234-123a-123456789"
+}
+```
+
+Retrieving a secret
+
+```bash
+aws secretsmanager get-secret-value --secret-id ${secret_name}
+```
+
+List secrets defined in secret manager
+
+```bash
+aws secretsmanager list-secrets
+```
 
 ## Reference
 
