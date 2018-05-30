@@ -40,6 +40,7 @@ Secretes can be retrieved via:
 * No cross account access
 * Secrets are stored per region
 * Secret retrieval is done by name and not by ARN
+* Support for on perm
 
 ## CLI usage
 
