@@ -9,11 +9,11 @@ AWS Secrets Manager is a managed service to store and transport sensitive data l
 * Secrets can be versioned
 * Built in integration with RDS
 
-## Secret storage
+### Secret storage
 
 Secrets are encrypted at rest using KMS keys and tansmited over the wire with TLS.
 
-## Secret rotation
+### Secret rotation
 
 The following options are available to rotate secrets:
 
@@ -22,7 +22,7 @@ The following options are available to rotate secrets:
 * AWS SDK
 * AWS CLI
 
-## Secret retrieval 
+### Secret retrieval 
 
 Secretes can be retrieved via:
 
@@ -30,10 +30,15 @@ Secretes can be retrieved via:
 * SDK 
 * CLI.
 
-## Pricing
+### Pricing
 
 * $0.40 per month, per secret
 * $0.05 per 10,000 API calls
+
+## Limitations
+
+* No cross account access
+* Secret retrieval is done by name and not by ARN
 
 ## Reference
 
