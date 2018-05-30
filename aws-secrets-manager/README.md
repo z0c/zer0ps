@@ -32,7 +32,7 @@ Secretes can be retrieved via:
 
 ## Pricing
 
-* $0.40 p/month p/secret
+* $0.40 per month, per secret
 * $0.05 per 10,000 API calls
 
 ## Reference
