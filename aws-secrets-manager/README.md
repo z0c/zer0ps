@@ -13,6 +13,10 @@ AWS Secrets Manager is a managed service to store and transport sensitive data l
 
 Secrets are encrypted at rest using KMS keys and tansmited over the wire with TLS. Secrets Manager creates a default key call `DefaultEncryptionKey` in KMS but a custom can also used.
 
+The permissions required to retrive secrets are:
+* secretsmanager:GetSecretValue
+* kms:Decrypt - Required only if using a custom key for encryption
+
 ### Secret rotation
 
 The following options are available to rotate secrets:
@@ -28,7 +32,7 @@ Secretes can be retrieved via:
 
 * AWS Console
 * SDK 
-* CLI.
+* CLI
 
 ### Pricing
 
@@ -39,12 +43,11 @@ Secretes can be retrieved via:
 
 * No cross account access
 * Secrets are stored per region
-* Secret retrieval is done by name and not by ARN
 * Support for on perm
 
 ## CLI usage
 
-Creating a secret
+### Creating a secret
 
 ```bash
 aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "kjdgsaIITAG&GIGVJV1213"
@@ -55,7 +58,7 @@ aws secretsmanager create-secret --name testSecret --description "this is a test
 }
 ```
 
-List existing secrets
+### List secrets
 
 ```bash
 aws secretsmanager list-secrets
@@ -76,7 +79,7 @@ aws secretsmanager list-secrets
 }
 ```
 
-Retrieving a secret
+### Retrieving a secret
 
 ```bash
 aws secretsmanager get-secret-value --secret-id testSecret
@@ -91,6 +94,7 @@ aws secretsmanager get-secret-value --secret-id testSecret
     "CreatedDate": 1527694267.151
 }
 ```
+The `secret-id` value can be either the friendly name or the secret ARN 
 
 The `query` parameter can be used to filter just the `SecretString` part of the output:
 
@@ -99,8 +103,7 @@ aws secretsmanager get-secret-value --secret-id testSecret --query SecretString
 "kjdgsaIITAG&GIGVJV1213"
 ```
 
-
-Deleting a secret, if the `recovery-window-in-days` is not specified it will default to 30 days. The minimum value is 7 days.
+### Deleting a secret
 
 ```bash
 aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-days 7
@@ -110,6 +113,8 @@ aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-day
     "DeletionDate": 1528300247.205
 }
 ```
+
+If the `recovery-window-in-days` is not specified it will default to 30 days. The minimum value is 7 days.
 
 ## Reference
 
