@@ -28,7 +28,7 @@ The following options are available to rotate secrets:
 
 ### Secret retrieval 
 
-Secretes can be retrieved via:
+Secrets can be retrieved via:
 
 * AWS Console
 * SDK 
