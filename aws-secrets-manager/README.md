@@ -122,3 +122,4 @@ If the `recovery-window-in-days` is not specified it will default to 30 days. Th
 * https://aws.amazon.com/secrets-manager/features/
 * https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
 * https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/index.html#cli-aws-secretsmanager
+* https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_overview.html
