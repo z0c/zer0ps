@@ -46,24 +46,68 @@ Secretes can be retrieved via:
 Creating a secret
 
 ```bash
-aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "23sf23c#et"
+aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "kjdgsaIITAG&GIGVJV1213"
 {
-    "ARN": "arn:aws:secretsmanager:REGION:ACCOUNTNUMBER:secret:testSecret-ID",
+    "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
     "Name": "testSecret",
     "VersionId": "VERSIONGUID-ab12-1234-123a-123456789"
+}
+```
+
+List existing secrets
+
+```bash
+aws secretsmanager list-secrets
+{
+    "SecretList": [
+        {
+            "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
+            "Name": "testSecret",
+            "Description": "VERSIONGUID-ab12-1234-123a-123456789",
+            "LastChangedDate": 1527694267.157,
+            "SecretVersionsToStages": {
+                "a12345b-ab12-1234-123a-123456789"": [
+                    "AWSCURRENT"
+                ]
+            }
+        }
+    ]
 }
 ```
 
 Retrieving a secret
 
 ```bash
-aws secretsmanager get-secret-value --secret-id ${secret_name}
+aws secretsmanager get-secret-value --secret-id testSecret
+{
+    "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
+    "Name": "testSecret",
+    "VersionId": "VERSIONGUID-ab12-1234-123a-123456789",
+    "SecretString": "kjdgsaIITAG&GIGVJV1213",
+    "VersionStages": [
+        "AWSCURRENT"
+    ],
+    "CreatedDate": 1527694267.151
+}
 ```
 
-List secrets defined in secret manager
+The `query` parameter can be used to filter just the `SecretString` part of the output:
 
 ```bash
-aws secretsmanager list-secrets
+aws secretsmanager get-secret-value --secret-id testSecret --query SecretString
+"kjdgsaIITAG&GIGVJV1213"
+```
+
+
+Deleting a secret, if the `recovery-window-in-days` is not specified it will default to 30 days. The minimum value is 7 days.
+
+```bash
+aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-days 7
+{
+    "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
+    "Name": "testSecret",
+    "DeletionDate": 1528300247.205
+}
 ```
 
 ## Reference
