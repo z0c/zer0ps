@@ -41,9 +41,9 @@ Secrets can be retrieved via:
 
 ## Limitations
 
-* No cross account access
+* Cross account access
 * Secrets are stored per region
-* Support for on perm
+* Support for on-perm
 
 ## CLI usage
 
