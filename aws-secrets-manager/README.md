@@ -50,7 +50,9 @@ Secrets can be retrieved via:
 ### Creating a secret
 
 ```bash
-$ aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "kjdgsaIITAG&GIGVJV1213"
+$ aws secretsmanager create-secret --name testSecret \
+                                   --description "this is a test" \
+                                   --secret-string "kjdgsaIITAG&GIGVJV1213"
 
 {
     "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
