@@ -50,7 +50,8 @@ Secrets can be retrieved via:
 ### Creating a secret
 
 ```bash
-aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "kjdgsaIITAG&GIGVJV1213"
+$ aws secretsmanager create-secret --name testSecret --description "this is a test" --secret-string "kjdgsaIITAG&GIGVJV1213"
+
 {
     "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
     "Name": "testSecret",
@@ -61,7 +62,8 @@ aws secretsmanager create-secret --name testSecret --description "this is a test
 ### List secrets
 
 ```bash
-aws secretsmanager list-secrets
+$ aws secretsmanager list-secrets
+
 {
     "SecretList": [
         {
@@ -82,7 +84,8 @@ aws secretsmanager list-secrets
 ### Retrieving a secret
 
 ```bash
-aws secretsmanager get-secret-value --secret-id testSecret
+$ aws secretsmanager get-secret-value --secret-id testSecret
+
 {
     "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
     "Name": "testSecret",
@@ -99,14 +102,16 @@ The `secret-id` value can be either the friendly name or the secret ARN
 The `query` parameter can be used to filter just the `SecretString` part of the output:
 
 ```bash
-aws secretsmanager get-secret-value --secret-id testSecret --query SecretString
+$ aws secretsmanager get-secret-value --secret-id testSecret --query SecretString
+
 "kjdgsaIITAG&GIGVJV1213"
 ```
 
 ### Deleting a secret
 
 ```bash
-aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-days 7
+$ aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-days 7
+
 {
     "ARN": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:testSecret-ID",
     "Name": "testSecret",
