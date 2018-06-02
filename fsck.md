@@ -27,5 +27,10 @@ $ fdisk -l
 
 4. Scan the disk, the `-y` switch enable the interactive repair mode
 ```
-$ fsck -a /dev/sda1
+$ fsck -a /dev/sdb1
+```
+
+fsck will skip if the file system has been marked has `clean`. To force the scan use the `-f` switch
+```
+$ fsck -f /dev/sdb1
 ```
