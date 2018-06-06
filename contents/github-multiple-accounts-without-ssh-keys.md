@@ -39,6 +39,11 @@ You can find out from the git config if this is the case. In my case I'm on a Ma
 osxkeychain
 ```
 
+To check if it's set at user profile level:
+
+```$ git config --global credential.helper
+```
+
 You can override this beahviour locally has well, to do this edit the `.git/config` file and add the following entry:
 
 ```
