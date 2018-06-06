@@ -26,12 +26,12 @@ The following options are available to rotate secrets:
 * AWS SDK
 * AWS CLI
 
-### Secret retrieval 
+### Secret retrieval
 
 Secrets can be retrieved via:
 
 * AWS Console
-* SDK 
+* SDK
 * CLI
 
 ### Pricing
@@ -99,7 +99,7 @@ $ aws secretsmanager get-secret-value --secret-id testSecret
     "CreatedDate": 1527694267.151
 }
 ```
-The `secret-id` value can be either the friendly name or the secret ARN 
+The `secret-id` value can be either the friendly name or the secret ARN
 
 The `query` parameter can be used to filter just the `SecretString` part of the output:
 
