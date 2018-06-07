@@ -14,3 +14,7 @@
 Interact with Akamai API's fro the CLI
 
  * https://github.com/akamai/cli
+
+## Reference
+
+ * [Akamai for DevOps pdf](https://developer.akamai.com/assets/downloads/afdo-world-tour-2018/akamai-for-devops-world-tour-workbook.pdf)
