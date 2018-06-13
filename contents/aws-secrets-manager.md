@@ -123,10 +123,12 @@ $ aws secretsmanager delete-secret --secret-id testSecret --recovery-window-in-d
 
 If the `recovery-window-in-days` is not specified it will default to 30 days. The minimum value is 7 days.
 
+## Cross account access
+
 ## Reference
 
 * https://aws.amazon.com/secrets-manager/
 * https://aws.amazon.com/secrets-manager/features/
 * https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
 * https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/index.html#cli-aws-secretsmanager
-* https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_overview.html
+* (Access)[https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_overview.html]
