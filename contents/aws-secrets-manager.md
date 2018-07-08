@@ -41,9 +41,9 @@ Secrets can be retrieved via:
 
 ## Limitations
 
-* Cross account access
 * Secrets are stored per region
 * Support for on-perm
+* Supported from aws-cli 1.15 and above
 
 ## CLI usage
 
@@ -125,10 +125,59 @@ If the `recovery-window-in-days` is not specified it will default to 30 days. Th
 
 ## Cross account access
 
+Secrets manager allows secrets to be accessed accross accounts. To use this you need to do the following steps. `source_account` means the account where the secrets are stored and `destination_account` is the that the secrets are being shared with.
+
+### On the source account create a policy to allow accesss to the secrets.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetSecretValue"
+            ],
+            "Resource": "arn:aws:secretsmanager:REGION:SOURCE_ACCOUNT:secret:PATH/*"
+        }
+    ]
+}
+```
+
+### Create a role for the policy, then set a trust policy to the `destination_account`
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::DESTINATION_ACCOUNT:root"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+### On the `destination_account`, create a policy to allow a user to assume the role of the `source_account`
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "sts:AssumeRole",
+    "Resource": "arn:aws:iam::SOURCE_ACCOUNT:role/ROLE_NAME*"
+  }
+}
+```
 ## Reference
 
 * https://aws.amazon.com/secrets-manager/
 * https://aws.amazon.com/secrets-manager/features/
 * https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
 * https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/index.html#cli-aws-secretsmanager
-* (Access)[https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_overview.html]
+* [Access](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_overview.html)
