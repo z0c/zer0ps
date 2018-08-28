@@ -11,7 +11,7 @@ $ cd site-name
 $ jekyll serve
 ```
 
-You can browse to `http://localhost:4000` to view the site
+There's no place like localhost, you can browse to `http://localhost:4000` to view the site
 
 ## Building
 
