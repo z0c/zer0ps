@@ -26,3 +26,24 @@ Signify that a human needs to take action, but not immediately. The system canno
 
 ### Logging
 No one needs to look at this information, but it is recorded for diagnostic or forensic purposes. The expectation is that no one reads logs unless something else prompts them to do so.
+
+## Job and Data Organization
+
+Load testing determined that our backend server can handle about 100 queries per second (QPS). Trials performed with a limited set of users lead us to expect a peak load of about 3,470 QPS, so we need at least 35 tasks. However, the following considerations mean that we need at least 37 tasks in the job, or N+2:
+
+During updates, one task at a time will be unavailable, leaving 36 tasks.
+A machine failure might occur during a task update, leaving only 35 tasks, just enough to serve peak load.13
+
+## Availability
+
+### Time-based availability
+
+availability = uptime / (uptime + downtime)
+
+Using this formula over the period of a year, we can calculate the acceptable number of minutes of downtime to reach a given number of nines of availability. For example, a system with an availability target of 99.99% can be down for up to 52.56 minutes in a year and stay within its availability target; see Availability Table for a table.
+
+### Aggregate availability
+
+availability = successful requests / total requests
+
+For example, a system that serves 2.5M requests in a day with a daily availability target of 99.99% can serve up to 250 errors and still hit its target for that given day.
