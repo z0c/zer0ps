@@ -47,3 +47,10 @@ $ git push origin <feature-name>
 ```
 
 Got to your fork, you should see an option to open the pull request
+
+## Cleaning up a fork
+
+After PR's are merged, you will want to clean up your changes to the upstream so they don't show in subsquent PR's. To do this reset with the upstream
+
+    $ git reset --hard upstream/master
+    $ git push origin master --force
