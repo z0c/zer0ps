@@ -46,3 +46,7 @@ CURRENT   NAME              CLUSTER                                             
 *         cluster-name arn:aws:eks:us-west-2:999999999:cluster/cluster-name arn:aws:eks:us-west-2:999999999:cluster/cluster-name
           minikube          minikube                                                     minikube
 ``
+
+## Debugging an image
+
+    kubectl run -i -t tools --image=arrowsama/netshoot --restart=Never --rm=true
