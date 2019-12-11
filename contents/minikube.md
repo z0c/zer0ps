@@ -38,5 +38,7 @@ $ docker build --rm -f Dockerfile -t image_name:latest .
 
 ### Starting with a specific version
 
-  `minikube start --kubernetes-version=v1.15.0`
+  ```
+  minikube start --kubernetes-version=v1.15.0
+  ```
 
